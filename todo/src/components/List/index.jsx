@@ -7,9 +7,9 @@ function List(props) {
   return (
     <ul className='todo-main'>
       {
-        todoList.map(item => {
+        todoList.map((item, index)=> {
           return (
-            <Item key={item.id} {...item} />
+            <Item key={item.id} {...item} index={ index} />
           )
         })
       }

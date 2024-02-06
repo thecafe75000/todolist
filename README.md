@@ -12,7 +12,7 @@
 
 5. Fonction de suppression
 
-6. Case à cocher de sélection totale et quantité
+6. Case à cocher pour la sélection totale et quantité
 
 PS: 
 - La partie CSS est réalisée en Less

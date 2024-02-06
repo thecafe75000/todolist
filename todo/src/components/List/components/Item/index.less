@@ -7,6 +7,13 @@ li {
   border-bottom: 1px solid #ddd;
 }
 
+li.active{
+  background-color: #ccc;
+  .btn{
+    display: block;
+  }
+}
+
 li label {
   float: left;
   cursor: pointer;
@@ -19,7 +26,7 @@ li label li input {
   top: -1px;
 }
 
-li button {
+li .btn {
   float: right;
   display: none;
   margin-top: 3px;
