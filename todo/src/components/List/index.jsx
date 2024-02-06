@@ -2,12 +2,17 @@ import React from 'react'
 import Item from './components/Item'
 import './index.less'
 
-function List() {
+function List(props) {
+  const {todoList} = props
   return (
     <ul className='todo-main'>
-      <Item/>
-      <Item/>
-      <Item/>
+      {
+        todoList.map(item => {
+          return (
+            <Item key={item.id} {...item} />
+          )
+        })
+      }
     </ul>
   )
 }

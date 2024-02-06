@@ -9,12 +9,16 @@ function App() {
   //? Initialize a state specifically designed to store the list data retrieved from requests
   const [todoList, setTodoList] = useState([])
 
+  //? The method getTodolist is placed here to allow for repeated invocation
+  //? Request todoList data and set the retrieved data to the state
+  const getTodolist = async () => {
+    const result = await reqTodolist()
+    console.log('result', result.data)
+    setTodoList(result.data)
+  }
+
   //? Send an Ajax request to fetch initialization data, this operation must be completed within the useEffect
   useEffect(() => {
-    const getTodolist = async () => {
-      const result = await reqTodolist()
-      console.log(result.data)
-    }
     getTodolist()
   }, [])
 
@@ -22,7 +26,7 @@ function App() {
     <div className='todo-container'>
       <div className='todo-wrap'>
         <Header />
-        <List />
+        <List todoList={ todoList } />
         <Footer />
       </div>
     </div>

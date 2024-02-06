@@ -6,9 +6,9 @@ app.get("/todo", (req, res) => {
     code: 200,
     msg: "Success",
     data: [
-      {id:1, thing:"reading", done:"false"},
-      {id:2, thing:"coding", done:"true"},
-      {id:3, thing:"writing", done:"false"}
+      {id:1, thing:"reading", done:false},
+      {id:2, thing:"coding", done:true},
+      {id:3, thing:"writing", done:false}
     ]
   })
 })

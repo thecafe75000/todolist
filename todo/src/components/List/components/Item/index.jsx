@@ -1,12 +1,13 @@
 import React from 'react'
 import './index.less'
 
-function Item() {
+function Item(props) {
+  const {id, thing, done} = props
   return (
     <li>
       <label>
-        <input type='checkbox' />
-        <span>xxxxx</span>
+        <input type='checkbox' checked={done} onChange={()=>{} } />
+        <span>{thing}</span>
       </label>
       <button className='btn btn-danger' style={{ display: 'none' }}>
         Delete
