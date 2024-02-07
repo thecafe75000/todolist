@@ -3,13 +3,18 @@ import Item from './components/Item'
 import './index.less'
 
 function List(props) {
-  const {todoList} = props
+  const { todoList, changeSingleState } = props
   return (
     <ul className='todo-main'>
       {
         todoList.map((item, index)=> {
           return (
-            <Item key={item.id} {...item} index={ index} />
+            <Item
+              key={item.id}
+              {...item}
+              index={index}
+              changeSingleState={changeSingleState}
+            />
           )
         })
       }

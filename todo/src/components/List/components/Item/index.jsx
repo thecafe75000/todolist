@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './index.less'
 
 function Item(props) {
-  const { id, thing, done, index } = props
+  const { id, thing, done, index, changeSingleState } = props
 
   //? Define a data to store the index of the 'li' tag when the mouse hovers over it
   const [mouseIndex, setMouseIndex] = useState(-1)
@@ -21,7 +21,7 @@ function Item(props) {
       }}
     >
       <label>
-        <input type='checkbox' checked={done} onChange={() => {}} />
+        <input type='checkbox' checked={done} onChange={(e) => {changeSingleState(id, e.target.checked)}} />
         <span>{thing}</span>
       </label>
       <button className='btn btn-danger'>Delete</button>
