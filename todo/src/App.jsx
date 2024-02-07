@@ -34,7 +34,7 @@ function App() {
     setTodoList(newTodoList)
   }
 
-  //? Method3: Delete a specific item from the to-do list
+  //? Method3: Delete a specific item from the todolist
   /**
    * 删除数组的值使用到的方法: 
    *    1- 删除单个：splice 或 filter
@@ -46,10 +46,16 @@ function App() {
     setTodoList([...todoList])
   }
 
+  
+  //? Method4: Add a new item to the todolist
+  const addNewTodo = (newTodo) => {
+    setTodoList([newTodo,...todoList])
+  }
+
   return (
     <div className='todo-container'>
       <div className='todo-wrap'>
-        <Header />
+        <Header addNewTodo={addNewTodo} />
         <List
           todoList={todoList}
           changeSingleState={changeSingleState}

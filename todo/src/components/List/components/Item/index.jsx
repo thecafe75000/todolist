@@ -2,7 +2,14 @@ import React, { useState } from 'react'
 import './index.less'
 
 function Item(props) {
-  const { id, thing, done, index, changeSingleState, deleteSingleItem } = props
+  const {
+    id,
+    thing,
+    done,
+    index,
+    changeSingleState,
+    deleteSingleItem,
+  } = props
 
   //? Define a data to store the index of the 'li' tag when the mouse hovers over it
   const [mouseIndex, setMouseIndex] = useState(-1)
