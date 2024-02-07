@@ -3,7 +3,7 @@ import Item from './components/Item'
 import './index.less'
 
 function List(props) {
-  const { todoList, changeSingleState } = props
+  const { todoList, changeSingleState, deleteSingleItem } = props
   return (
     <ul className='todo-main'>
       {
@@ -14,6 +14,7 @@ function List(props) {
               {...item}
               index={index}
               changeSingleState={changeSingleState}
+              deleteSingleItem={deleteSingleItem}
             />
           )
         })

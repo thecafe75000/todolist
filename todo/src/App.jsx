@@ -17,16 +17,14 @@ function App() {
     setTodoList(result.data)
   }
 
-
   //? Send an Ajax request to fetch initialization data, this operation must be completed within the useEffect
   useEffect(() => {
     getTodolist()
   }, [])
 
-
   //? Method2: Modify the selected state of a single item in the 'todo' list
-  const changeSingleState = (id,newType) => {
-    //! attention: NOT directly modify the data within the state; you must obtain new data and then use the 'setXXX' to update the data
+  const changeSingleState = (id, newType) => {
+    //! attention: CAN NOT directly modify the data within the state; you must obtain new data and then use the 'setXXX' to update the data
     const newTodoList = todoList.map((item) => {
       //? Iterate through the array and check if the current 'id' matches the modified 'id'
       return item.id === id ? { ...item, done: newType } : item
@@ -36,11 +34,27 @@ function App() {
     setTodoList(newTodoList)
   }
 
+  //? Method3: Delete a specific item from the to-do list
+  /**
+   * 删除数组的值使用到的方法: 
+   *    1- 删除单个：splice 或 filter
+   *    2- 删除多个：filter
+   * 注意：splice会修改原数组，filter是返回新数组，不修改原数组
+   */
+  const deleteSingleItem = (index) => {
+    todoList.splice(index,1)
+    setTodoList([...todoList])
+  }
+
   return (
     <div className='todo-container'>
       <div className='todo-wrap'>
         <Header />
-        <List todoList={todoList} changeSingleState={changeSingleState} />
+        <List
+          todoList={todoList}
+          changeSingleState={changeSingleState}
+          deleteSingleItem={deleteSingleItem}
+        />
         <Footer />
       </div>
     </div>
