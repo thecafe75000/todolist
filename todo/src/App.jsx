@@ -61,7 +61,7 @@ function App() {
           changeSingleState={changeSingleState}
           deleteSingleItem={deleteSingleItem}
         />
-        <Footer />
+        <Footer todoList={todoList} />
       </div>
     </div>
   )
