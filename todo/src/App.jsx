@@ -36,20 +36,34 @@ function App() {
 
   //? Method3: Delete a specific item from the todolist
   /**
-   * 删除数组的值使用到的方法: 
+   * 删除数组的值使用到的方法:
    *    1- 删除单个：splice 或 filter
    *    2- 删除多个：filter
    * 注意：splice会修改原数组，filter是返回新数组，不修改原数组
    */
   const deleteSingleItem = (index) => {
-    todoList.splice(index,1)
+    todoList.splice(index, 1)
     setTodoList([...todoList])
   }
 
-  
   //? Method4: Add a new item to the todolist
   const addNewTodo = (newTodo) => {
-    setTodoList([newTodo,...todoList])
+    setTodoList([newTodo, ...todoList])
+  }
+
+  //? Method5: Modify the status of all items (all items are checked)
+  const allItemsChecked = (type) => {
+    const newTodoList = todoList.map((item) => {
+      return { ...item, done: type }
+    })
+
+    setTodoList(newTodoList)
+  }
+
+  //? Method6: Clear all chosen tasks
+  const clearAll = () => {
+    const itemChecked = todoList.filter(item => !item.done)
+    setTodoList(itemChecked)
   }
 
   return (
@@ -61,7 +75,11 @@ function App() {
           changeSingleState={changeSingleState}
           deleteSingleItem={deleteSingleItem}
         />
-        <Footer todoList={todoList} />
+        <Footer
+          todoList={todoList}
+          allItemsChecked={allItemsChecked}
+          clearAll={clearAll}
+        />
       </div>
     </div>
   )
