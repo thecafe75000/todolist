@@ -4,10 +4,11 @@ import List from '@/components/List'
 import Footer from '@/components/Footer'
 import './App.less'
 import { reqTodolist } from '@/api'
+import {getTodo, setTodo} from '@/util/todoStorage'
 
 function App() {
   //? Initialize a state specifically designed to store the list data retrieved from requests
-  const [todoList, setTodoList] = useState([])
+  const [todoList, setTodoList] = useState(getTodo() || [])
 
   //? Method1:The method getTodolist is placed here to allow for repeated invocation
   //? Request todoList data and set the retrieved data to the state
@@ -19,8 +20,13 @@ function App() {
 
   //? Send an Ajax request to fetch initialization data, this operation must be completed within the useEffect
   useEffect(() => {
-    getTodolist()
+    todoList.length !== 0 || getTodolist()
   }, [])
+
+  //? At the beginning, execute setTodo first, then send a request everytime when the 'todoList' data is updated
+  useEffect(() => {
+    setTodo(todoList)
+  }, [todoList])
 
   //? Method2: Modify the selected state of a single item in the 'todo' list
   const changeSingleState = (id, newType) => {
@@ -62,7 +68,7 @@ function App() {
 
   //? Method6: Clear all chosen tasks
   const clearAll = () => {
-    const itemChecked = todoList.filter(item => !item.done)
+    const itemChecked = todoList.filter((item) => !item.done)
     setTodoList(itemChecked)
   }
 
