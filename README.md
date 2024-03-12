@@ -17,4 +17,4 @@
 PS: 
 - La partie CSS est réalisée en Less
 - Le serveur se fait avec Express (server.js)
-- La partage des données est réalisé en utilisant l'approche de l'élévation de 'state', et les données sont transmises aux enfants-composants via les props
+- La partage des données est réalisé en utilisant l'approche de l'élévation de 'state', et les données sont transmises aux enfants-composants via 'props'
